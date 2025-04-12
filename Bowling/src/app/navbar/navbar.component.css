@@ -1,0 +1,34 @@
+main {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 30px;
+  padding-block: 30px;
+  background-color: #a8bfff;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 10px;
+  margin-inline: 5px;
+  border-radius: 5px;
+  color: #ffff;
+  font-weight: bold;
+  text-shadow: black 0px 0px 1px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+a:hover {
+  background-color: #6b91f7;
+}
+
+.title {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-shadow: black 0px 0px 1px;
+  cursor: pointer;
+}
