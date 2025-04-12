@@ -1,0 +1,22 @@
+main {
+  width: max(30%, 260px);
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.424);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  justify-content: center;
+  justify-self: center;
+  padding-block: auto;
+  margin-block: 10%;
+}
+
+h2 {
+  color: #a8bfff;
+  text-decoration: underline;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
