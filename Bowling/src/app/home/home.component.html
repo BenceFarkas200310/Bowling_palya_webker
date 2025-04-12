@@ -1,1 +1,8 @@
-
+<main>
+  <h1>Pályáink:</h1>
+  <div class="cards" *ngFor="let alley of alleys">
+    <mat-card appearance="outlined">
+      <mat-card-content>{{ alley.id }}</mat-card-content>
+    </mat-card>
+  </div>
+</main>
