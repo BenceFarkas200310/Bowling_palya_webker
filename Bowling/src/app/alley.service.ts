@@ -1,9 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Alley } from './DTOs/alley';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AlleyService {
+export class AlleyService implements OnInit {
+  private readonly url = 'http://localhost:3000/alleys';
+  alleys: Alley[] = [];
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  ngOnInit(): void {
+    this.fetchAlleyData();
+  }
+  fetchAlleyData() {
+    this.http.get<Alley[]>(this.url).subscribe((data) => {
+      this.alleys = data;
+      console.log(this.alleys);
+    });
+  }
 }
