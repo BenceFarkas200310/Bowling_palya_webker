@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../DTOs/user';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login',

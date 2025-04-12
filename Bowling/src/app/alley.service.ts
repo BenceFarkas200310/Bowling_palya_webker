@@ -16,7 +16,6 @@ export class AlleyService implements OnInit {
   fetchAlleyData() {
     this.http.get<Alley[]>(this.url).subscribe((data) => {
       this.alleys = data;
-      console.log(this.alleys);
     });
   }
 }

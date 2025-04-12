@@ -7,7 +7,6 @@ import { BookComponent } from './book/book.component';
 import { UserService } from './user.service';
 import { CommonModule } from '@angular/common';
 import { AlleyService } from './alley.service';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +25,7 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   title = 'Bowling';
+
   constructor(private alleyService: AlleyService) {}
 
   ngOnInit(): void {
