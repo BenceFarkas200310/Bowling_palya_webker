@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { User } from '../DTOs/user';
 
 @Component({
   selector: 'app-register',
@@ -38,10 +39,12 @@ export class RegisterComponent {
 
   tryRegister() {
     if (this.registerForm.invalid) return;
-    let username: string = this.registerForm.get('username')?.value || '';
-    let password: string = this.registerForm.get('password')?.value || '';
+    let user: User = {
+      username: this.registerForm.get('username')?.value || '',
+      password: this.registerForm.get('password')?.value || '',
+    };
 
-    if (this.userService.register(username, password)) {
+    if (this.userService.register(user)) {
       this.router.navigate(['/login']);
     }
   }

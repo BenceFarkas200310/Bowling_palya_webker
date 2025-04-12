@@ -12,6 +12,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
+import { User } from '../DTOs/user';
 
 @Component({
   selector: 'app-login',
@@ -39,9 +40,12 @@ export class LoginComponent {
   tryLogin(): void {
     if (this.loginForm.invalid) return;
     console.log('login');
-    let username = this.loginForm.get('username')?.value || '';
-    let password = this.loginForm.get('password')?.value || '';
-    if (this.userService.login(username, password)) {
+    let user: User = {
+      username: this.loginForm.get('username')?.value || '',
+      password: this.loginForm.get('password')?.value || '',
+    };
+
+    if (this.userService.login(user)) {
       this.router.navigate(['/home']);
     }
   }
