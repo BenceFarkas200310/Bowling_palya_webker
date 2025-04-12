@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -31,4 +33,16 @@ export class RegisterComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
+
+  constructor(private userService: UserService, private router: Router) {}
+
+  tryRegister() {
+    if (this.registerForm.invalid) return;
+    let username: string = this.registerForm.get('username')?.value || '';
+    let password: string = this.registerForm.get('password')?.value || '';
+
+    if (this.userService.register(username, password)) {
+      this.router.navigate(['/login']);
+    }
+  }
 }

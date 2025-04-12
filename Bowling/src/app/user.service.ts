@@ -13,6 +13,10 @@ export class UserService {
     return true;
   }
 
+  register(username: string, password: string): boolean {
+    return true;
+  }
+
   logout(): void {
     this.isLoggedInSubject.next(false);
   }

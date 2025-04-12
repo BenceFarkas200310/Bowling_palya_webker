@@ -1,6 +1,10 @@
 <main>
   <h2>Regisztáció</h2>
-  <form class="regiter-form" [formGroup]="registerForm">
+  <form
+    class="regiter-form"
+    [formGroup]="registerForm"
+    (ngSubmit)="tryRegister()"
+  >
     <mat-form-field class="example-full-width">
       <mat-label>Felhasználónév</mat-label>
       <input matInput formControlName="username" id="username" />
