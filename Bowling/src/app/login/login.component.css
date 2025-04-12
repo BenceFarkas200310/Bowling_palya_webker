@@ -20,3 +20,13 @@ form {
   display: flex;
   flex-direction: column;
 }
+
+.error {
+  font-size: small;
+  color: rgba(252, 50, 50, 0.893);
+  margin-top: -10px;
+}
+
+button {
+  margin-top: 20px;
+}

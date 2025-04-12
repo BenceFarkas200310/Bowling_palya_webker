@@ -1,15 +1,33 @@
 <main>
   <h2>Bejelentkezés</h2>
-  <form class="login-form">
+  <form class="login-form" [formGroup]="loginForm">
     <mat-form-field class="example-full-width">
       <mat-label>Felhasználónév</mat-label>
-      <input matInput />
+      <input matInput formControlName="username" id="username" />
     </mat-form-field>
+    <div
+      class="error"
+      *ngIf="
+        loginForm.get('username')?.hasError('required') &&
+        loginForm.get('username')?.touched
+      "
+    >
+      A felhasználó nevet kötelező megadni!
+    </div>
     <br />
     <mat-form-field class="example-full-width">
       <mat-label>Jelszó</mat-label>
-      <input matInput type="password" />
+      <input matInput type="password" formControlName="password" />
     </mat-form-field>
+    <div
+      class="error"
+      *ngIf="
+        loginForm.get('password')?.hasError('required') &&
+        loginForm.get('password')?.touched
+      "
+    >
+      A jelszót kötelező megadni!
+    </div>
     <button mat-flat-button type="submit">Bejelentkezés</button>
   </form>
 </main>
