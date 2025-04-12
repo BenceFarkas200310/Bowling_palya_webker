@@ -7,6 +7,30 @@ main {
   align-items: center;
 }
 
+.burger-menu {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+}
+
+.content.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  background-color: #a8bfff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 a {
   text-decoration: none;
   text-transform: uppercase;
@@ -31,4 +55,21 @@ a:hover {
   font-weight: bolder;
   text-shadow: black 0px 0px 1px;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: #a8bfff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 }

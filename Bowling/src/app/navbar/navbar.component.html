@@ -1,6 +1,7 @@
 <main>
   <div class="title" routerLink="/">BestBowling</div>
-  <div class="content">
+  <button class="burger-menu" (click)="toggleMenu()">☰</button>
+  <div class="content" [class.open]="menuOpen">
     <a routerLink="book">Időpont foglalás</a>
     <a routerLink="about">Rólunk</a>
     <a routerLink="home">Kijelentkezés</a>
