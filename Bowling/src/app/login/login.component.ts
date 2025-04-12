@@ -10,7 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -34,11 +34,15 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   tryLogin(): void {
+    if (this.loginForm.invalid) return;
+    console.log('login');
     let username = this.loginForm.get('username')?.value || '';
     let password = this.loginForm.get('password')?.value || '';
-    this.userService.login(username, password);
+    if (this.userService.login(username, password)) {
+      this.router.navigate(['/home']);
+    }
   }
 }

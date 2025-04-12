@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="isLoggedIn">
   <div class="title" routerLink="/">BestBowling</div>
   <button class="burger-menu" (click)="toggleMenu()">☰</button>
   <div class="content" [class.open]="menuOpen">
