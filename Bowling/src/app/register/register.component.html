@@ -1,1 +1,33 @@
-<p>register works!</p>
+<main>
+  <h2>Regisztáció</h2>
+  <form class="regiter-form" [formGroup]="registerForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Felhasználónév</mat-label>
+      <input matInput formControlName="username" id="username" />
+    </mat-form-field>
+    <div
+      class="error"
+      *ngIf="
+        registerForm.get('username')?.hasError('required') &&
+        registerForm.get('username')?.touched
+      "
+    >
+      A felhasználó nevet kötelező megadni!
+    </div>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Jelszó</mat-label>
+      <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+    <div
+      class="error"
+      *ngIf="
+        registerForm.get('password')?.hasError('required') &&
+        registerForm.get('password')?.touched
+      "
+    >
+      A jelszót kötelező megadni!
+    </div>
+    <button mat-flat-button type="submit">Regisztráció</button>
+  </form>
+</main>
