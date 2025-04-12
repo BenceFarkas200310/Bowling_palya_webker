@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -32,4 +33,12 @@ export class LoginComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
+
+  constructor(private userService: UserService) {}
+
+  tryLogin(): void {
+    let username = this.loginForm.get('username')?.value || '';
+    let password = this.loginForm.get('password')?.value || '';
+    this.userService.login(username, password);
+  }
 }

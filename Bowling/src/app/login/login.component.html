@@ -1,6 +1,6 @@
 <main>
   <h2>Bejelentkezés</h2>
-  <form class="login-form" [formGroup]="loginForm">
+  <form class="login-form" [formGroup]="loginForm" onsubmit="tryLogin()">
     <mat-form-field class="example-full-width">
       <mat-label>Felhasználónév</mat-label>
       <input matInput formControlName="username" id="username" />
