@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  isLoggedIn: boolean = false;
+  constructor() {}
 
-  constructor() { }
+  login(username: string, password: string) {
+    this.isLoggedIn = true;
+  }
 }
