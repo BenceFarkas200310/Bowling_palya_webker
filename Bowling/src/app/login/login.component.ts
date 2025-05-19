@@ -32,7 +32,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
 
@@ -42,8 +42,9 @@ export class LoginComponent {
     if (this.loginForm.invalid) return;
     console.log('login');
     let user: User = {
-      username: this.loginForm.get('username')?.value || '',
+      email: this.loginForm.get('email')?.value || '',
       password: this.loginForm.get('password')?.value || '',
+      isAdmin: false,
     };
 
     if (this.userService.login(user)) {

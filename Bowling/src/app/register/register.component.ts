@@ -33,6 +33,7 @@ export class RegisterComponent {
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(private userService: UserService, private router: Router) {}
@@ -41,7 +42,9 @@ export class RegisterComponent {
     if (this.registerForm.invalid) return;
     let user: User = {
       username: this.registerForm.get('username')?.value || '',
+      email: this.registerForm.get('email')?.value || '',
       password: this.registerForm.get('password')?.value || '',
+      isAdmin: false,
     };
 
     if (this.userService.register(user)) {

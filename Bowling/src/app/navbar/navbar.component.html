@@ -1,11 +1,17 @@
 <main>
-  <div class="title" routerLink="/">BestBowling</div>
+  <div class="title" routerLink="home">BestBowling</div>
   <div *ngIf="isLoggedIn">
     <button class="burger-menu" (click)="toggleMenu()">☰</button>
     <div class="content" [class.open]="menuOpen">
-      <a routerLink="book">Időpont foglalás</a>
       <a routerLink="about">Rólunk</a>
-      <a routerLink="home">Kijelentkezés</a>
+      <a routerLink="login" (click)="logout()">Kijelentkezés</a>
+    </div>
+  </div>
+  <div *ngIf="!isLoggedIn">
+    <button class="burger-menu" (click)="toggleMenu()">☰</button>
+    <div class="content" [class.open]="menuOpen">
+      <a routerLink="register">Regisztráció</a>
+      <a routerLink="login">Bejelentkezés</a>
     </div>
   </div>
 </main>

@@ -2,7 +2,49 @@
   <h1>Pályáink:</h1>
   <div class="cards" *ngFor="let alley of alleys">
     <mat-card appearance="outlined">
-      <mat-card-content>{{ alley.id }}</mat-card-content>
+      <mat-card-content>
+        {{ alley.name }}
+        <div class="card-btn">
+          <button mat-flat-button routerLink="/alley-details/{{ alley.id }}">
+            részletek
+          </button>
+          <button mat-flat-button (click)="deleteAlley(alley.id)">
+            törlés
+          </button>
+        </div>
+      </mat-card-content>
     </mat-card>
+    <br />
   </div>
+
+  <h2>Új pálya hozzáadása</h2>
+  <form [formGroup]="alleyForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Név</mat-label>
+      <input matInput formControlName="name" placeholder="Enter alley name" />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width">
+      <mat-label>Leírás</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Enter description"
+      ></textarea></mat-form-field
+    ><br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Maximum kapacitás</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="maxCapacity"
+        placeholder="Enter max capacity"
+      />
+    </mat-form-field>
+    <br />
+    <button mat-flat-button type="submit" [disabled]="alleyForm.invalid">
+      Hozzáadás
+    </button>
+  </form>
 </main>

@@ -17,9 +17,14 @@ export class NavbarComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.isLoggedIn$.subscribe((loggedIn) => {
+    this.userService.isLoggedInSubject.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
     });
+  }
+
+  logout(): void {
+    this.userService.logout();
+    this.isLoggedIn = false;
   }
 
   toggleMenu() {

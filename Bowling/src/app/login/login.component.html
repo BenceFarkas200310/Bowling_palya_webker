@@ -7,14 +7,14 @@
     (ngSubmit)="tryLogin()"
   >
     <mat-form-field class="example-full-width">
-      <mat-label>Felhasználónév</mat-label>
-      <input matInput formControlName="username" id="username" />
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" id="email" />
     </mat-form-field>
     <div
       class="error"
       *ngIf="
-        loginForm.get('username')?.hasError('required') &&
-        loginForm.get('username')?.touched
+        loginForm.get('email')?.hasError('required') &&
+        loginForm.get('email')?.touched
       "
     >
       A felhasználó nevet kötelező megadni!

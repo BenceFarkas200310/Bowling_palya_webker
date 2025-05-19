@@ -19,6 +19,23 @@
       A felhasználó nevet kötelező megadni!
     </div>
     <br />
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" id="email" />
+    </mat-form-field>
+
+    <div
+      class="error"
+      *ngIf="
+        registerForm.get('email')?.hasError('required') &&
+        registerForm.get('email')?.touched
+      "
+    >
+      Az email címet kötelező megadni!
+    </div>
+    <br />
+
     <mat-form-field class="example-full-width">
       <mat-label>Jelszó</mat-label>
       <input matInput type="password" formControlName="password" />

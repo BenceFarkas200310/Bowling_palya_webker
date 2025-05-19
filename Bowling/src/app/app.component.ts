@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
   constructor(private alleyService: AlleyService) {}
 
   ngOnInit(): void {
-    this.alleyService.fetchAlleyData();
+    this.alleyService.fetchAlleyData().subscribe((data) => {
+      this.alleyService.alleys = data;
+    });
   }
 }

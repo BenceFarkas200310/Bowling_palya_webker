@@ -1,24 +1,70 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from, of } from 'rxjs';
 import { User } from './DTOs/user';
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User as FirebaseUser,
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  public isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  login(user: User): boolean {
-    this.isLoggedInSubject.next(true);
-    return true;
+  currentUser: FirebaseUser | null = null;
+
+  constructor(private auth: Auth) {
+    onAuthStateChanged(this.auth, (user) => {
+      this.currentUser = user;
+      this.isLoggedInSubject.next(user !== null);
+      console.log('User state changed:', user);
+    });
   }
 
-  register(user: User): boolean {
-    return true;
+  login(user: User) {
+    return from(
+      signInWithEmailAndPassword(this.auth, user.email!, user.password)
+        .then((result) => {
+          this.currentUser = result.user;
+          console.log('User logged in:', result.user);
+          return true;
+        })
+        .catch((error) => {
+          console.error('Login error:', error);
+          return false;
+        })
+    );
   }
 
-  logout(): void {
-    this.isLoggedInSubject.next(false);
+  register(user: User) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, user.email!, user.password)
+        .then((result) => {
+          this.currentUser = result.user;
+          return true;
+        })
+        .catch((error) => {
+          console.error('Register error:', error);
+          return false;
+        })
+    );
+  }
+
+  logout() {
+    return from(
+      signOut(this.auth)
+        .then(() => {
+          this.currentUser = null;
+          console.log('User logged out');
+        })
+        .catch((error) => {
+          console.error('Logout error:', error);
+        })
+    );
   }
 }

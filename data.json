@@ -1,16 +1,35 @@
 {
   "alleys": [
     {
-      "id": 1,
-      "reserved": []
+      "id": "d8d3",
+      "name": "TESZT31",
+      "description": "asdasd",
+      "maxCapacity": 3
     },
     {
-      "id": 2,
-      "reserved": ["2025-04-20 16:20"]
+      "id": "d8d2",
+      "name": "TESZT1",
+      "description": "asd",
+      "maxCapacity": 2
     },
     {
-      "id": 3,
-      "reserved": ["2025-04-21 12:00"]
+      "id": "d8d1",
+      "name": "TESZT",
+      "description": "asd",
+      "maxCapacity": 3
+    },
+    {
+      "id": "8a5a",
+      "name": "Teszt5",
+      "description": "asd",
+      "maxCapacity": 3
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice",
+      "email": "valami@valami.com"
     }
   ]
 }

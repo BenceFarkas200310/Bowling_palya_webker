@@ -1,4 +1,7 @@
 export interface Alley {
-  id: number;
+  id: string;
+  name: string;
+  description: string;
+  maxCapacity: number;
   reserved: string[];
 }
